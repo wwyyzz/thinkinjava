@@ -5,4 +5,5 @@ public class SimpleEnumUse {
         Spiciness howHot = Spiciness.MEDIUM;
         System.out.println(howHot);
     }
+
 }
