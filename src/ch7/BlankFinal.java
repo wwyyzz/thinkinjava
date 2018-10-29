@@ -1,7 +1,5 @@
 package ch7;
 
-import java.awt.*;
-
 class Poppet {
     private int i;
     Poppet(int ii){
