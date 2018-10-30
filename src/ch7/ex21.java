@@ -1,9 +1,13 @@
 package ch7;
 
 class Animal {
-    public void run(){
-        System.out.println("animal run");
+    public void run(int i){
+        System.out.println("animal run" + i);
         }
+
+    public void run(String s){
+        System.out.println("animal run" + s);
+    }
 
     final public void jump(){
         System.out.println("animal jump");
@@ -12,11 +16,16 @@ class Animal {
 
 class Dog extends Animal{
     @Override
-    public void run() {
-        System.out.println("dog run");
+    public void run(int i) {
+        System.out.println("dog run" + i);
     }
 
-//    public void jump(){
+    @Override
+    public void run(String s) {
+        System.out.println("dog jump" + s);
+    }
+
+    //    public void jump(){
 //        System.out.println("dog jump");
 //    }
 }
@@ -24,11 +33,13 @@ class Dog extends Animal{
 public class ex21 {
     public static void main(String[] args) {
         Animal a = new Animal();
-        a.run();
+        a.run(5);
+        a.run("high");
         a.jump();
 
         Dog d = new Dog();
-        d.run();
+        d.run(10);
+        d.run("low");
         d.jump();
 
     }
