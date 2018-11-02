@@ -4,11 +4,25 @@ class Stringed extends Instrument {
     public void play(Note n){
         System.out.println("Stringed.play()" + n);
     }
+
+    @Override
+    public String What() {
+        return "Stringed";
+    }
+
+    @Override
+    public void adjust() {
+    }
 }
 
 class Brass extends Instrument {
     public void play(Note n){
         System.out.println("Brass.play()" + n);
+    }
+
+    @Override
+    public void adjust() {
+        System.out.println("Brass.adjust()");
     }
 }
 
