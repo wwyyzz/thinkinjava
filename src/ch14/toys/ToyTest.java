@@ -25,6 +25,7 @@ public class ToyTest {
         Class c = null;
         try {
             c = Class.forName("ch14.toys.FancyToy");
+            System.out.println("c = " + c.getSimpleName());
         }catch (ClassNotFoundException e ){
             System.out.println("Can't find FancyToy");
             System.exit(1);
@@ -46,5 +47,6 @@ public class ToyTest {
             System.exit(1);
         }
         printInfo(obj.getClass());
+
     }
 }
