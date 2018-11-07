@@ -1,5 +1,7 @@
 package ch5;
 
+import java.util.Arrays;
+
 public class Flower {
     int petalCount = 0;
     static String s = "initial value";
@@ -58,8 +60,17 @@ public class Flower {
         System.out.println("interface = " + cc.getInterfaces());
         System.out.println("typeName = " + cc.getTypeName());
 
+
         System.out.println("x = " + x);
-        Class a = x.getClass();
+        Class a = String.class;
+
+        System.out.println("name" + a.getName());
+        System.out.println("method" + Arrays.toString(a.getMethods()));
+        System.out.println("simpleName" + a.getSimpleName());
+        System.out.println("field:" + a.getDeclaredFields().toString());
+        System.out.println("constrature" + a.getConstructors());
+
+
         Class c = Flower.class;
         try {
             Flower w = (Flower) c.newInstance();
