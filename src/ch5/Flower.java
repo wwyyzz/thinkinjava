@@ -2,7 +2,7 @@ package ch5;
 
 public class Flower {
     int petalCount = 0;
-    String s = "initial value";
+    static String s = "initial value";
 
     Flower(int petals){
         petalCount = petals;
@@ -31,7 +31,72 @@ public class Flower {
     }
 
     public static void main(String[] args) {
-        Flower x = new Flower();
+        Class ca = null;
+        try {
+            ca = Class.forName("ch5.Flower");
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Class cb;
+        cb = Flower.class;
+
+        Flower x = new Flower("abcdefg",5);
+
+        Class cc = x.getClass();
+
+        System.out.println(ca==cb);
+        System.out.println(cb==cc);
+        System.out.println(ca==cc);
+
+        System.out.println();
+        System.out.println("ca = " + ca);
+        System.out.println("cb = " + cc);
+        System.out.println("cc = " + cc);
+
+        System.out.println("interface = " + cc.getInterfaces());
+        System.out.println("typeName = " + cc.getTypeName());
+
+        System.out.println("x = " + x);
+        Class a = x.getClass();
+        Class c = Flower.class;
+        try {
+            Flower w = (Flower) c.newInstance();
+            System.out.println("w = " + w);
+            System.out.println("w.s = " + w.s);
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        Flower z;
+        try {
+            z = (Flower)a.newInstance();
+            System.out.println("z = " + z);
+            System.out.println("z.s = " + z.s);
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Class b = Class.forName("ch5.Flower");
+            Object y = ((Flower)b.newInstance()).petalCount;
+            System.out.println("b = " + b);
+            System.out.println("y = " + y);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(a);
+
         x.printPetalCount();
     }
 }

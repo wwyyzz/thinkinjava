@@ -1,5 +1,7 @@
 package logging;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.logging.*;
 
@@ -33,8 +35,9 @@ public class logging {
         logger.exiting(getClass().getName(),"doIt");
     }
     public static void main(String[] args) {
-
+        final Logger logger1 = Logger.getLogger("com");
         System.out.println("Loger name = " + logger.getName());
+        System.out.println("Loger name = " + logger1.getName());
 
         MyFormatter formatter = new MyFormatter();
         ConsoleHandler handler = new ConsoleHandler();
@@ -43,7 +46,16 @@ public class logging {
         logger.removeHandler(new ConsoleHandler());
         logger.addHandler(handler);
 
+        try {
+            FileHandler file = new FileHandler("myapp.%u.%g.log");
+            file.setFormatter(new SimpleFormatter());
+            logger.addHandler(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         logger.setLevel(Level.INFO);
+
 
 //        logger.addHandler(new ConsoleHandler());
 //        logger1.addHandler(new ConsoleHandler());
@@ -55,6 +67,7 @@ public class logging {
         System.out.println("Handles = " + logger.getHandlers());
         System.out.println("Filter = " + logger.getFilter());
 
+        System.out.println(Math.sin(3.1));
         logging lg = new logging();
         lg.doIt();
         logger.log(Level.WARNING, "hello ");
@@ -66,6 +79,10 @@ public class logging {
         System.out.println("Resource Bundle = " + logger.getResourceBundle());
         System.out.println("Parnet Handle = " + logger.getUseParentHandlers());
 //        System.out.println(logger.);
+        System.out.println(LogRecord.class.getName());
+        LogRecord lr = new LogRecord(Level.INFO,"abcdefghjikl");
+        System.out.println(lr.getMessage());
+
     }
 
 }
